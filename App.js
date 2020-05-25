@@ -29,25 +29,50 @@ export default class Login extends Component {
     super()
     this.state = {
       showPass: true,
-      press: false
+      press: false,
+      HintWord: ""
     }
   }
+  
+
   clickCreatePkFk(){
+    // fetch('http://facebook.github.io/react-native/movies.json')
+    //   .then((response) => {
+    //     response.json()
+    //     console.log("s",response);
+    //   })
+    //   .then((responseJson) => {
+    //     console.log("responseJson");
+
+    //     console.log(responseJson);
+       
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
     console.log("clickCreatePkFk");
-    fetch("http://192.168.1.2/serverlogin.php",{
+    console.log(this.state.HintWord);
+    //let Hintwordd = this.state.HintWord
+    // let url =`http://127.0.0.1:8000/register?random_string=dsfds`
+    fetch(`http://192.168.1.30:8000/register?random_string=${this.state.HintWord}`,{
+      //fetch(`https://reactnative.dev/movies.json`,{
         method: 'GET',
         headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         },
       })
-      .then((res) =>res.json()
+      .then((res) => res.json()
+      
       )
       .then(response=>{
-        console.log("response",response);
+        console.log(response);
+   //     console.log("respoxxnse",response);
       })
       .catch(err=>{
-        console.log("fail create pk fk")
+        console.log(err)
+        
       })
   };
   
@@ -76,6 +101,8 @@ export default class Login extends Component {
           <TextInput
             style={styles.input}
             placeholder={'Hint Word'}
+            onChangeText={(HintWord) => this.setState({HintWord})}
+            value={this.state.HintWord}
             //secureTextEntry={this.state.showPass}
             placeholderTextColor={'rgba(255,255,255,0.7)'}
             underlineColorAndroid='transparent'
