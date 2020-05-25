@@ -16,10 +16,11 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+//import Icon from 'react-native-vector-icons/Ionicons';
 const {width: WIDTH} = Dimensions.get('window');
-import imageground from './images/background.jpg';
+import imageground from './images/backgroundblockchain.jpg';
 import logologin from './images/blockchain.jpg';
+import Icon from 'react-native-vector-icons/Ionicons'
 const logo = { uri: "https://reactjs.org/logo-og.png" };
 
 export default class Login extends Component {
@@ -31,7 +32,25 @@ export default class Login extends Component {
       press: false
     }
   }
-
+  clickCreatePkFk(){
+    console.log("clickCreatePkFk");
+    fetch("http://192.168.1.2/serverlogin.php",{
+        method: 'GET',
+        headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        },
+      })
+      .then((res) =>res.json()
+      )
+      .then(response=>{
+        console.log("response",response);
+      })
+      .catch(err=>{
+        console.log("fail create pk fk")
+      })
+  };
+  
   showPass = () => {
     if(this.state.press == false){
       this.setState({showPass: false, press: true})
@@ -46,43 +65,30 @@ export default class Login extends Component {
     
         <View style={styles.logoContainer}>
           <Image source={logologin} style={styles.logo} />
-          <Text style={styles.titlelogin}>Block Chain</Text>
+          <Text style={styles.titlelogin}>Block fsfChain</Text>
         </View>
 
         <View style={styles.inputContainer}>
-          <Icon name={'ios-person-outline'} size={28}
+          <Icon name={'ios-lock'} size={28}
                 color={'rgba(255,255,255,0.7)'}
                 style={styles.inputIcon}
             />  
           <TextInput
             style={styles.input}
-            placeholder={'Username'}
-            placeholderTextColor={'rgba(255,255,255,0.7)'}
-            underlineColorAndroid='transparent'
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Icon name={'person'} size={28}
-                color={'rgba(255,255,255,0.7)'}
-                style={styles.inputIcon}
-            />  
-          <TextInput
-            style={styles.input}
-            placeholder={'Password'}
-            secureTextEntry={this.state.showPass}
+            placeholder={'Hint Word'}
+            //secureTextEntry={this.state.showPass}
             placeholderTextColor={'rgba(255,255,255,0.7)'}
             underlineColorAndroid='transparent'
           />
 
-          <TouchableOpacity style={styles.btneye} onPress={this.showPass.bind(this)}>
-            <Icon name={ this.state.press == false ? 'ios-eye-outline' : 'ios-eye-off-outline'}  
+          {/* <TouchableOpacity style={styles.btneye} onPress={this.showPass.bind(this)}>
+            <Icon name={ this.state.press == false ? 'ios-eye' : 'ios-eye-off'}  
                 size={26} color={'rgba(255,255,255,0.7)'}
             />
-          </TouchableOpacity >
+          </TouchableOpacity > */}
         </View>
 
-        <TouchableOpacity style={styles.btnLogin}>
+        <TouchableOpacity style={styles.btnLogin} onPress={this.clickCreatePkFk.bind(this)}>
           <Text style={styles.text}>Login</Text>
         </TouchableOpacity>
 
@@ -90,6 +96,12 @@ export default class Login extends Component {
     );
   }
 };
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   imagegroundContainer: {
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   btnLogin: {
-    width: WIDTH - 55,
+    width: WIDTH/4,
     height:45,
     borderRadius:25,
     backgroundColor: '#432577',
@@ -159,7 +171,31 @@ const styles = StyleSheet.create({
     fontSize:16,
     textAlign:'center'
   }
-  
- 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
