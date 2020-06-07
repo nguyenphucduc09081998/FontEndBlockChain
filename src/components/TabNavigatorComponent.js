@@ -1,22 +1,22 @@
 // import { createBottomTabNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeComponent from './HomeComponent';
-import PromotionComponent from './PromotionComponent';
-import TransactionHistoryComponent from './TransactionHistoryComponent';
-import MyWalletComponent from './MyWalletComponent';
+import RegisterComponent from './RegisterComponent';
+import HistoryComponent from './HistoryComponent';
+import HistoryDetailComponent from './HistoryDetailComponent';
 
 let routeConfigs = {
   'Home': {
     screen: HomeComponent,
   },
-  'Promotion': {
-    screen: PromotionComponent,
+  'Register': {
+    screen: RegisterComponent,
   },
-  'Transaction': {
-    screen: TransactionHistoryComponent,
+  '': {
+    screen: HistoryComponent,
   },
-  'MyWallet': {
-    screen: MyWalletComponent,
+  'HistoryDetail': {
+    screen: HistoryDetailComponent,
   },
 };
 
@@ -35,7 +35,7 @@ let tabNavigatorConfig = {
       padding: -10
     },
   },
-  order: ['Home', 'Promotion', 'Transaction', 'MyWallet'],
+  order: ['Home', 'Register', '', 'HistoryDetail'],
 };
 
 export const TabNavigator = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);

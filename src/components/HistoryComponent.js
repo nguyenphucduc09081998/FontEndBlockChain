@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
 
-export default class TransactionHistoryComponent extends Component {
+export default class HistoryComponent extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     let tabBarLabel = 'Home';
@@ -23,7 +23,7 @@ export default class TransactionHistoryComponent extends Component {
         justifyContent: 'center'
         }}
       >
-        <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>This is Transaction History Screen</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'white' }}>This is  History Screen</Text>
       </View>
     );
   }
