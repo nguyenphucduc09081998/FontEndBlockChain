@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // import { createBottomTabNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeComponent from './HomeComponent';
@@ -6,6 +7,7 @@ import HistoryComponent from './HistoryComponent';
 import HistoryDetailComponent from './HistoryDetailComponent';
 
 let routeConfigs = {
+  // eslint-disable-next-line prettier/prettier
   'Home': {
     screen: HomeComponent,
   },
