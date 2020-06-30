@@ -9,6 +9,20 @@ import {
 } from 'react-native';
 
 export default class Register extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      private_key: "",
+      public_key: "",
+      message: ""
+    }
+  }
+
+  register(){
+
+  }
+
+
   render() {
     return (
       <View style={styles.Register}>
@@ -29,7 +43,10 @@ export default class Register extends Component {
           secureTextEntry={true}
           underlineColorAndroid={'transparent'}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={this.register.bind(this)}
+        >
           <Text style={styles.btntext}>Sign Up</Text>
         </TouchableOpacity>
       </View>

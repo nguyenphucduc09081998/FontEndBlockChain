@@ -1,0 +1,1 @@
+export default domain = '192.168.141.2/api'

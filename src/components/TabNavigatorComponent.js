@@ -1,43 +1,24 @@
 /* eslint-disable prettier/prettier */
 // import { createBottomTabNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import HomeComponent from './HomeComponent';
 import RegisterComponent from './RegisterComponent';
 import HistoryComponent from './HistoryComponent';
 import HistoryDetailComponent from './HistoryDetailComponent';
 
-let routeConfigs = {
-  // eslint-disable-next-line prettier/prettier
-  'Home': {
-    screen: HomeComponent,
-  },
-  'Register': {
-    screen: RegisterComponent,
-  },
-  '': {
-    screen: HistoryComponent,
-  },
-  'HistoryDetail': {
-    screen: HistoryDetailComponent,
-  },
-};
+const Tab = createMaterialBottomTabNavigator();
 
-let tabNavigatorConfig = {
-  tabBarPosition: 'bottom',
-  animationEnabled: true,
-  swipeEnabled: true,
-  tabBarOptions: {
-    showIcon: true,
-    activeTintColor: 'blue',
-    labelStyle: {
-      fontSize: 13,
-    },
-    style: {
-      backgroundColor: 'lightgray',
-      padding: -10
-    },
-  },
-  order: ['Home', 'Register', '', 'HistoryDetail'],
-};
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeComponent} />
+      <Tab.Screen name="Register" component={RegisterComponent} />
+    </Tab.Navigator>
+  );
+}
 
-export const TabNavigator = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);
+export default Tab;
+
+
+
+
